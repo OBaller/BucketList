@@ -15,6 +15,7 @@
 		B46CB23627BA8B9400293105 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46CB23527BA8B9400293105 /* Location.swift */; };
 		B46CB23827BB039900293105 /* FaceIDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46CB23727BB039900293105 /* FaceIDView.swift */; };
 		B46CB23A27BB169B00293105 /* EditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46CB23927BB169A00293105 /* EditView.swift */; };
+		B46CB23C27BBC09C00293105 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46CB23B27BBC09C00293105 /* Result.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		B46CB23527BA8B9400293105 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		B46CB23727BB039900293105 /* FaceIDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDView.swift; sourceTree = "<group>"; };
 		B46CB23927BB169A00293105 /* EditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditView.swift; sourceTree = "<group>"; };
+		B46CB23B27BBC09C00293105 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				B46CB22727B9BAF400293105 /* ContentView.swift */,
 				B46CB23927BB169A00293105 /* EditView.swift */,
 				B46CB23527BA8B9400293105 /* Location.swift */,
+				B46CB23B27BBC09C00293105 /* Result.swift */,
 				B46CB23327BA7AD200293105 /* EnumViews.swift */,
 				B46CB23727BB039900293105 /* FaceIDView.swift */,
 				B46CB22927B9BB0500293105 /* Assets.xcassets */,
@@ -153,6 +156,7 @@
 				B46CB22827B9BAF400293105 /* ContentView.swift in Sources */,
 				B46CB23A27BB169B00293105 /* EditView.swift in Sources */,
 				B46CB23427BA7AD200293105 /* EnumViews.swift in Sources */,
+				B46CB23C27BBC09C00293105 /* Result.swift in Sources */,
 				B46CB23627BA8B9400293105 /* Location.swift in Sources */,
 				B46CB22627B9BAF400293105 /* BucketListApp.swift in Sources */,
 			);
