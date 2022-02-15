@@ -13,8 +13,8 @@ struct ContentView: View {
     @StateObject private var viewModel = ViewModel()
     
     var body: some View {
-        NavigationView {
-            ZStack {
+        ZStack {
+            if viewModel.isUnlocked {
                 Map(coordinateRegion: $viewModel.mapRegion, annotationItems: viewModel.locations) { location in
                     MapAnnotation(coordinate: location.coordinate) {
                         VStack {
@@ -58,8 +58,15 @@ struct ContentView: View {
                     }
                 }
                 
+            } else {
+                Button("Unlock Places") {
+                    viewModel.authenticate()
+                }
+                .padding()
+                .background(.blue)
+                .foregroundColor(.white)
+                .clipShape(Capsule())
             }
-            
         }
         .sheet(item: $viewModel.selectedPlace) { place in
             EditView(location: place) {
@@ -67,6 +74,7 @@ struct ContentView: View {
             }
             
         }
+        
     }
 }
 

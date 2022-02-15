@@ -7,15 +7,17 @@
 
 import Foundation
 import MapKit
+import LocalAuthentication
 
 extension ContentView {
     @MainActor class ViewModel: ObservableObject {
         let savePath = FileManager.documentsDirectory.appendingPathComponent("SavedPlaces")
-
+        
         @Published var mapRegion = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 50, longitude: 0), span: MKCoordinateSpan(latitudeDelta: 25, longitudeDelta: 25))
         
         @Published private(set) var locations: [Location]
         @Published var selectedPlace: Location?
+        @Published var isUnlocked = false
         
         func addLocation() {
             let newLocation = Location(id: UUID(), name: "New location", description: "", latitude: mapRegion.center.latitude, longitude: mapRegion.center.longitude)
@@ -25,7 +27,7 @@ extension ContentView {
         
         func update(location: Location) {
             guard let selectedPlace = selectedPlace else { return }
-
+            
             if let index = locations.firstIndex(of: selectedPlace) {
                 locations[index] = location
                 save()
@@ -47,6 +49,30 @@ extension ContentView {
                 try data.write(to: savePath, options: [.atomic, .completeFileProtection])
             } catch {
                 print("Unable to save data.")
+            }
+        }
+        
+        func authenticate() {
+            let context = LAContext()
+            var error: NSError?
+            
+            // check whether biometric authentication is possible
+            if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+                // it's possible, so go ahead and use it
+                let reason = "Please authenticate yourself to unlock your places."
+                
+                context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                    // authentication has now completed
+                    if success {
+                        Task { @MainActor in
+                            self.isUnlocked = true
+                        }
+                    } else {
+                        // error
+                    }
+                }
+            } else {
+                // no biometrics
             }
         }
     }
